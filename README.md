@@ -11,6 +11,18 @@ For ideal "click" / single touches, the event order should be as follows.
 5. touch-end
 6. click
 
+For click and drags across the button, you'd expect to see something like:
+
+1. pointer-down
+2. touch-start
+3. touch-move
+4. pointer-cancel
+5. touch-move
+6. ...
+7. touch-end
+
+*Note that pointer-up, pointer-leave and click do not fire*
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using [cra-template-typescript-electron](https://github.com/vixalie/cra-template-typescript-electron) template.
