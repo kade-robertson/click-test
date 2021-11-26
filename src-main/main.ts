@@ -1,8 +1,10 @@
-import { app, BrowserWindow } from 'electron';
-import path from 'path';
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
+import { app, BrowserWindow } from "electron";
+import path from "path";
+import installExtension, {
+  REACT_DEVELOPER_TOOLS,
+} from "electron-devtools-installer";
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === "development";
 
 const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
@@ -14,26 +16,26 @@ const createWindow = (): void => {
       nodeIntegrationInSubFrames: true,
       enableRemoteModule: true,
       contextIsolation: true,
-      preload: path.join(__dirname, 'preload.js')
-    }
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
   if (isDev) {
     installExtension([REACT_DEVELOPER_TOOLS])
       .then(() => {
-        mainWindow.loadURL('http://localhost:3000');
-        mainWindow.webContents.openDevTools();
+        mainWindow.loadURL("http://localhost:3000");
       })
-      .catch(err => console.log('An error occurred: ', err));
+      .catch((err) => console.log("An error occurred: ", err));
   } else {
-    mainWindow.loadFile(path.join('build', 'index.html'));
+    mainWindow.loadFile(path.join("build", "index.html"));
   }
+  mainWindow.webContents.openDevTools();
 };
 
 app.whenReady().then(createWindow);
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
     app.quit();
   }
 });

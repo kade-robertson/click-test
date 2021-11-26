@@ -2,6 +2,10 @@
   "name": "click-test",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Kade Robertson",
+    "email": "kade@kaderobertson.dev"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -13,7 +17,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "electron-devtools-installer": "^3.2.0"
   },
   "scripts": {
     "start": "concurrently \"npm:start:renderer\" \"npm:build:main\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=development electronmon .\"",
@@ -48,8 +53,8 @@
     "node": ">=14"
   },
   "build": {
-    "appId": "com.electron.my_app",
-    "productName": "My App",
+    "appId": "com.kade-robertson.click-test",
+    "productName": "Click Test",
     "files": [
       "build/**/*",
       "node_modules/**/*"
@@ -63,11 +68,11 @@
       "type": "development"
     },
     "win": {
-      "target": "nsis",
+      "target": "portable",
       "icon": "./public/logo512.png"
     },
     "linux": {
-      "target": "deb",
+      "target": "AppImage",
       "category": "Development"
     }
   },
