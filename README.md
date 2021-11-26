@@ -1,3 +1,16 @@
+# Click Test
+
+Basic Electron app to test click / touch behaviour and event ordering.
+
+For ideal "click" / single touches, the event order should be as follows.
+
+1. pointer-down
+2. touch-start
+3. pointer-up
+4. pointer-leave
+5. touch-end
+6. click
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using [cra-template-typescript-electron](https://github.com/vixalie/cra-template-typescript-electron) template.
